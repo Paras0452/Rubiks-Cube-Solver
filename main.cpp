@@ -284,6 +284,8 @@ int main() {
 
     for (auto move: moves) cout << cube.getMove(move) << " ";
     cout << "\n";
+    cube.print();
+//    idaStarSolver.rubiksCube.print();
 
 
 
