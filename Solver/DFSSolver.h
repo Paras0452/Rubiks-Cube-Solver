@@ -20,10 +20,15 @@ private:
 
 //    DFS code to find the solution (helper function)
     bool dfs(int dep) {
+// BASE CASE CHECKED TO SEE IF CUBE IS ALREADY SOLVED
         if (rubiksCube.isSolved()) return true;
+//        CHECKING IF WE HAVE ALREADY EXCEEDED THE MAXIMUM DEPTH SEARCH THAT CAN BE DONE
         if (dep > max_search_depth) return false;
         for (int i = 0; i < 18; i++) {
+//            PERFORM ALL THE MOVES
+//           RubiksCube::MOVE(i) will actually typecast i into the enum format which we have created
             rubiksCube.move(RubiksCube::MOVE(i));
+//            THIS SIMPLY PERFORMS THE MOVE .move function
             moves.push_back(RubiksCube::MOVE(i));
             if (dfs(dep + 1)) return true;
             moves.pop_back();

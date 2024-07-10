@@ -3,7 +3,7 @@
 //
 
 #include <bits/stdc++.h>
-//#include "Model/RubiksCube3dArray.cpp"
+#include "Model/RubiksCube3dArray.cpp"
 //#include "Model/RubiksCube1dArray.cpp"
 //#include "Model/RubiksCubeBitboard.cpp"
 #include "Solver/DFSSolver.h"
@@ -271,20 +271,77 @@ int main() {
 //    CornerDBMaker dbMaker(fileName, 0x99);
 //    dbMaker.bfsAndStore();
 
-    RubiksCubeBitboard cube;
-    auto shuffleMoves = cube.randomShuffleCube(8);
-    cube.print();
-    for (auto move: shuffleMoves) cout << cube.getMove(move) << " ";
-    cout << "\n";
+// CREATED A 3D ARRAY MODELLED OBJECT OF RUBIK'S CUBE AND PRINTED IT FOR TESTING
+//    RubiksCube3dArray object;
+//    object.print();
+//    if(object.isSolved()) cout<<"SOLVED"<<"\n";
+//    else cout<<"NOT SOLVED"<<"\n";
 
-    IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, fileName);
-    auto moves = idaStarSolver.solve();
+// PERFORMED A LEFT MOVE AND PRINTED THE CUBE AGAIN
+//    object.l();
+//    object.print();
 
-    idaStarSolver.rubiksCube.print();
+//    RANDOM SHUFFLE THE CUBE N NUMBER OF TIMES AND PRINT THE MOVES USED
+//            vector<RubiksCube::MOVE> movesDone = object.randomShuffleCube(4);
+//            object.print();
+//            for(auto &move: movesDone) cout<<object.getMove(move)<<" ";
+//            cout<<endl;
+//    if(object.isSolved()) cout<<"SOLVED"<<"\n";
+//    else cout<<"NOT SOLVED"<<"\n";
 
-    for (auto move: moves) cout << cube.getMove(move) << " ";
-    cout << "\n";
-    cube.print();
+//RubiksCube3dArray cube1;
+//RubiksCube3dArray cube2;
+//cube1.print();
+//cube2.print();
+//cube2.l();
+//if(cube1 == cube2) cout<<"Equal"<<"\n";
+//else cout<<"Not Equal"<<"\n";
+//cube2.l();
+//    if(cube1 == cube2) cout<<"Equal"<<"\n";
+//    else cout<<"Not Equal"<<"\n";
+//unordered_map<RubiksCube3dArray,bool,Hash3d> mp;
+//mp[cube1] = true;
+//if(mp[cube1]) cout<<"Present in the Map"<<"\n";
+//else cout<<"Not Present"<<"\n";
+//if(mp[cube2]) cout<<"Present in the Map"<<"\n";
+//else cout<<"Not Present"<<"\n";
+
+
+
+//---------------------TESTING DFS SOLVER ----------------------
+
+RubiksCube3dArray cube;
+vector<RubiksCube::MOVE> movesDone = cube.randomShuffleCube(4);
+cube.print();
+for(auto &move: movesDone) cout<< cube.getMove(move)<<" ";
+cout<<"\n";
+
+DFSSolver<RubiksCube3dArray,Hash3d> dfsSolver(cube,6);
+vector<RubiksCube::MOVE> movesReq = dfsSolver.solve();
+dfsSolver.rubiksCube.print();
+for(auto &move: movesReq) cout<<cube.getMove(move)<<" ";
+cout<<"\n";
+
+//------------------------------DONE---------------------
+
+
+
+
+
+//    RubiksCubeBitboard cube;
+//    auto shuffleMoves = cube.randomShuffleCube(8);
+//    cube.print();
+//    for (auto move: shuffleMoves) cout << cube.getMove(move) << " ";
+//    cout << "\n";
+//
+//    IDAstarSolver<RubiksCubeBitboard, HashBitboard> idaStarSolver(cube, fileName);
+//    auto moves = idaStarSolver.solve();
+//
+//    idaStarSolver.rubiksCube.print();
+//
+//    for (auto move: moves) cout << cube.getMove(move) << " ";
+//    cout << "\n";
+//    cube.print();
 //    idaStarSolver.rubiksCube.print();
 
 
